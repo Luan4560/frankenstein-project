@@ -1,14 +1,21 @@
-import {render, screen} from '@testing-library/react';
+import { render, screen} from '@testing-library/react';
 import { SelectExcuse } from './SelectExcuse';
 
-describe('Select Excuse ', () => {
+describe('SelectExcuse Compononent ', () => {
+  render(<SelectExcuse />)
+  
+  it('should render a description', () => {
+    const description = screen.getByText('Select the type of excuse 😏')
+    expect(description).toBeInTheDocument()
+  })
+
   it('Should render list of buttons', () => {
-    const {getByText} = render(<SelectExcuse />)
-   
-    expect(getByText('Family')).toBeInTheDocument();
-    // expect(getByText('Office')).toBeInTheDocument();
-    // expect(getByText('Children')).toBeInTheDocument();
-    // expect(getByText('College')).toBeInTheDocument();
-    // expect(getByText('Party')).toBeInTheDocument();
+    render(<SelectExcuse />)
+
+    screen.getByRole('button', {name: /Family/i})
+    screen.getByRole('button', {name: /Office/i})
+    screen.getByRole('button', {name: /Children/i})
+    screen.getByRole('button', {name: /College/i})
+    screen.getByRole('button', {name: /Party/i})
   })
 })

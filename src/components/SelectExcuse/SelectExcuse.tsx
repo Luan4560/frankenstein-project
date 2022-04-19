@@ -12,7 +12,6 @@ export const SelectExcuse = () => {
  const [category, setCategory] = useState<String>('');
  const [excuse, setExuse] = useState<ExcuseProps []>([])
 
- 
  const handleClick = async(event: MouseEvent<HTMLButtonElement>) => {
   setCategory(event.currentTarget.value)
 
@@ -20,7 +19,6 @@ export const SelectExcuse = () => {
   setExuse(response.data)
  }
 
- 
   return (
     <SC.Container>
       <h2>Select the type of excuse 😏</h2>
@@ -35,9 +33,7 @@ export const SelectExcuse = () => {
       {excuse && (
         excuse.map(item => (
           <div key={item.id}>
-            <h3>
-              {item.excuse}
-            </h3>
+            <h3 data-testid="text-test">{item.excuse}</h3>
           </div>
         ))
       )}
